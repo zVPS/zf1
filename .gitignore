@@ -12,3 +12,6 @@ vendor/*
 composer.lock
 bin/dbunit
 bin/phpunit
+/nbproject/private/
+/nbproject/project.xml
+/nbproject/project.properties
