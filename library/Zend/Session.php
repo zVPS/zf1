@@ -523,6 +523,11 @@ class Zend_Session extends Zend_Session_Abstract
      */
     protected static function _checkId($id)
     {
+        //In PHP7.1 the session.hash_bits_per_character is deprecated. So this check don't make sense anymore.
+        // check it out https://wiki.php.net/rfc/session-id-without-hashing
+        if (version_compare(phpversion(), '7.1.0', '>')) {
+            return true;
+        }
         $saveHandler = ini_get('session.save_handler');
         if ($saveHandler == 'cluster') { // Zend Server SC, validate only after last dash
             $dashPos = strrpos($id, '-');
